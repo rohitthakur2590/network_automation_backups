@@ -1,0 +1,5 @@
+backup_path: network_automation_backups/rtr1.txt
+changed: true
+date: '2023-07-28'
+failed: false
+time: '18:49:32'
