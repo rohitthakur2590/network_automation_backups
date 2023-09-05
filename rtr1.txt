@@ -81,11 +81,8 @@ interface Loopback37
  ip address 11.1.7.1 255.255.255.0
  ip ospf 110 area 0
 !
-interface Loopback38
+interface Loopback40
  ip address 11.1.8.1 255.255.255.0
-!
-interface Loopback39
- ip address 11.1.9.1 255.255.255.0
 !
 interface GigabitEthernet0/0
  description Demo Configuration
