@@ -152,7 +152,7 @@ crypto pki certificate chain SLA-TrustPoint
   D697DF7F 28
   	quit
 !
-license udi pid CSR1000V sn 9FG633JRDI7
+license udi pid CSR1000V sn 972X517UQZY
 diagnostic bootup level minimal
 memory free low-watermark processor 71497
 !
