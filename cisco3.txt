@@ -2,7 +2,7 @@ Building configuration...
 
 Current configuration : 7059 bytes
 !
-! Last configuration change at 11:21:37 UTC Tue Oct 17 2023
+! Last configuration change at 11:21:59 UTC Tue Oct 17 2023
 !
 version 17.3
 service timestamps debug datetime msec
@@ -152,7 +152,7 @@ crypto pki certificate chain SLA-TrustPoint
   D697DF7F 28
   	quit
 !
-license udi pid CSR1000V sn 9N9EKC2YWCK
+license udi pid CSR1000V sn 9KTMVRUXUZC
 diagnostic bootup level minimal
 memory free low-watermark processor 71497
 !
