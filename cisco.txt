@@ -2,7 +2,7 @@ Building configuration...
 
 Current configuration : 7059 bytes
 !
-! Last configuration change at 09:32:26 UTC Tue Oct 17 2023
+! Last configuration change at 09:01:14 UTC Wed Oct 18 2023
 !
 version 17.3
 service timestamps debug datetime msec
@@ -152,7 +152,7 @@ crypto pki certificate chain SLA-TrustPoint
   D697DF7F 28
   	quit
 !
-license udi pid CSR1000V sn 9N3E9CN8WVQ
+license udi pid CSR1000V sn 92I1WHTHA2N
 diagnostic bootup level minimal
 memory free low-watermark processor 71497
 !
@@ -214,10 +214,10 @@ ip ssh pubkey-chain
   username ansible
    key-hash ssh-rsa 9C3AC8C088DD95F9CB30147BC4267F1A ansible-network@redhat.com
 ip ssh server algorithm publickey ecdsa-sha2-nistp256 ecdsa-sha2-nistp384 ecdsa-sha2-nistp521 ssh-rsa x509v3-ecdsa-sha2-nistp256 x509v3-ecdsa-sha2-nistp384 x509v3-ecdsa-sha2-nistp521
-ip scp server disable
+ip scp server enable
 !
 ip access-list standard GS_NAT_ACL
- 10 deny 192.168.35.0 0.0.0.255
+ 10 permit 192.168.35.0 0.0.0.255
 !
 !
 !
