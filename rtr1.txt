@@ -1,20 +1,45 @@
 Building configuration...
 
   
-Current configuration : 4042 bytes
+Current configuration : 3551 bytes
 !
-! Last configuration change at 08:24:03 UTC Mon Jul 10 2023 by cisco
+! Last configuration change at 06:49:23 UTC Fri May 3 2024 by cisco
 !
 version 15.9
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname R1
+hostname ios
 !
 boot-start-marker
 boot-end-marker
 !
+!
+vrf definition test_vrf
+ description This is a test VRF for merged state
+!
+vrf definition vrf1
+ vnet tag 2024
+ description This is vrf1
+ ipv4 multicast multitopology
+!
+vrf definition vrf2
+ description This is vrf2
+ rd 100:1
+ route-target export 100:1
+ route-target import 100:1
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+vrf definition vrf3
+ rd 1:100
+!
+vrf list secure_north
 !
 enable password cisco
 !
@@ -39,15 +64,14 @@ mmi snmp-timeout 180
 !
 ip domain name ansible.lab
 ip cef
-ipv6 unicast-routing
-ipv6 cef
+no ipv6 cef
 !
 multilink bundle-name authenticated
 !
 !
 !
 !
-username cisco secret 9 $9$K1MXts6y7YCW.f$kzX.mE83aPY6JFdccQINhA0XwkOpViFndO/i14/fx..
+username cisco secret 9 $9$KdGpxSw7YM7MlP$Jz5Zg.VIarJ1nlDqhsLGmMLQOhGgeuP1dxVeadfnBTM
 !
 redundancy
 !
@@ -65,34 +89,15 @@ redundancy
 !
 !
 !
-interface Loopback27
- ip address 10.1.7.1 255.255.255.0
- ip ospf 110 area 0
-!
-interface Loopback28
- ip address 10.1.8.1 255.255.255.0
- ip ospf 110 area 0
-!
-interface Loopback29
- ip address 10.1.9.1 255.255.255.0
- ip ospf 110 area 0
-!
-interface Loopback37
- ip address 11.1.7.1 255.255.255.0
- ip ospf 110 area 0
-!
-interface Loopback40
- ip address 11.1.8.1 255.255.255.0
-!
 interface GigabitEthernet0/0
- description Demo Configuration
- ip address 10.0.12.1 255.255.255.248
+ ip address dhcp
  duplex auto
  speed auto
  media-type rj45
 !
 interface GigabitEthernet0/1
- ip address 11.0.13.1 255.255.255.248
+ vrf forwarding vrf1
+ no ip address
  duplex auto
  speed auto
  media-type rj45
@@ -105,42 +110,17 @@ interface GigabitEthernet0/2
  media-type rj45
 !
 interface GigabitEthernet0/3
- ip address dhcp
- duplex auto
- speed auto
- media-type rj45
-!
-interface GigabitEthernet0/4
  no ip address
  shutdown
  duplex auto
  speed auto
  media-type rj45
-!
-interface GigabitEthernet0/5
- no ip address
- shutdown
- duplex auto
- speed auto
- media-type rj45
-!
-router ospf 110
- router-id 1.1.1.1
- network 10.0.12.1 0.0.0.0 area 0
- network 11.0.13.1 0.0.0.0 area 0
-!
-router ospf 111
- max-metric router-lsa on-startup 100
 !
 ip forward-protocol nd
 !
 !
 no ip http server
 no ip http secure-server
-!
-ipv6 router ospf 1
- router-id 1.1.1.1
- passive-interface default
 !
 ipv6 ioam timestamp
 !
