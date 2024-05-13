@@ -1,0 +1,170 @@
+## Last commit: 2024-05-09 10:49:32 UTC by ansible
+version 18.4R1.8;
+groups {
+    test;
+}
+system {
+    login {
+        user ansible {
+            uid 2000;
+            class super-user;
+            authentication {
+                encrypted-password "$6$3ER8kVYS$db8Lraf1uC2UaM7GLobaYlOXgmQtYuv3lSeSd5D2oepGqJXCDLMNnWN/T3BR33Mx2adt2dRQVyIs4GZGYkfGa/"; ## SECRET-DATA
+            }
+        }
+        user ansible_test {
+            uid 2001;
+            class operator;
+            authentication {
+                encrypted-password "$6$2l9O9GNa$2qHLaFTVFnULX9MdiDovwLzufTKvv1Aa50qBZVfg7HowfYGIGCNnZHhbCMRoH2csEcJ.RXD.D5XhS5DPiAz7l0"; ## SECRET-DATA
+            }
+        }
+        user awx {
+            uid 2002;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC0bIku93WCAhFCPD8UzdEwDcsCihozLmsV0SpyUxQidNGsESe7PmvoCOoHM04oBLGj96NMrUqoQylpKnkdR4aaqOSm1/Yz5puKq/0mc/5Fa1j+ikRJA8IVZghfLfDy5AoZ0jWk5DLoILWcHAia++LzTEQPwucVe8C7CFORYyBJhSrpVnWrMoCdqrbqX8prZJ0eme1KQnf0urQF3p0VxSqeZE8KGfSz8KXhjQ8RDfch+47yjx+byWHAxxY3JnnkyOPbZAEElLS9biVluosRYfYfOIql5ThbRoBi118Oj4HQ7KZxCULz7qocqtj+Ja5ln11LyN7jT/dtaiSEuefSUYFQ/boUDFtot4waAP/ZN3DGiX0FVSey9CkzuUSB0eAefZRAwQfVcqYfIzMV/dPB+VBVsEXuY94gKYkPmcBGIOFdXaptL3iGgdtKALxtup+FQ9Acyqjcn0G+xWeTFqqlSoOLhzMLHhDtPwEjLiTBCtBgMgC5NW/efMtbZjgCk3PSTFiWyholGhil/Iajr8c1mKtvLHos5CO0Hi6hARw2PPBgPrmRWClJQHCBGTB4eX3I1wMlYxq2iiqvcj5pTRC1wL/xwXVwc7tcbj+aJPmTTAR+6ArK4OYYgspiftp5Y4oHa+DgTVfGoVuViwo6DaLPTlXwpVJwMql3gdnr08lOQ5XBzQ== awx"; ## SECRET-DATA
+            }
+        }
+        user test_user {
+            uid 2003;
+            class super-user;
+            authentication {
+                ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCe4j94HZBjHBC2wufEpX+anPbCu9ld17yO+ZRebfhpcsg7ebx6tgzOX9rQwuOM36eDSAFtfxFxtgcUGK0TLfhX5sRMhsb26IU4bxUw+nd/jMzJOdRCFBw1nMXJ8sOnYQNUkeNhfi9QmkGB8c+ZcgmAH5wYcGJiClUWxKnZofemvvPW9Ps+LX2IcP3Nj+EADBQ5H+xhN3unj7+XZhuwAiPSZ59U0+OpgA9vEHG2ra1AsPCL5MLNjIZfQq8f/eLPVdZyS/R5rCzYEOVku8LUs+ucCtQR3wXcBRvdey7Q+JRz+ySaxAgmTwIigESnFTQ5RPIKJsLHpTtHyT37Cmd04fvj rothakur"; ## SECRET-DATA
+            }
+        }
+    }
+    root-authentication {
+        encrypted-password "$6$Pw7yljKi2x4Jy.17$fqNg7ZMt5CHL21IRNDDtSdwgAREt62pDByNE8yM7lI4SlxVMJb8qEkdAbqZVL8k1wxq0YObU66s0DxKsFzkzj."; ## SECRET-DATA
+    }
+    services {
+        ssh {
+            root-login allow;
+        }
+        netconf {
+            ssh {
+                port 830;
+            }
+        }
+        web-management {
+            http {
+                interface fxp0.0;
+            }
+        }
+    }
+    host-name DemoTest;
+    license {
+        autoupdate {
+            url https://ae1.juniper.net/junos/key_retrieval;
+        }
+    }
+    phone-home {
+        server https://redirect.juniper.net;
+    }
+}
+interfaces {
+    ge-0/0/1 {
+        description Test11;
+        enable;
+    }
+    ge-0/0/2 {
+        description Test22;
+        enable;
+    }
+    ge-0/0/3 {
+        enable;
+    }
+    ge-0/0/4 {
+        enable;
+        native-vlan-id 50;
+        unit 0 {
+            family ethernet-switching {
+                interface-mode trunk;
+                vlan {
+                    members vlan30;
+                }
+            }
+        }
+    }
+    ge-0/0/5 {
+        unit 0 {
+            family ethernet-switching {
+                interface-mode trunk;
+                vlan {
+                    members vlan02;
+                }
+            }
+        }
+    }
+    ge-0/0/6 {
+        unit 0 {
+            family ethernet-switching {
+                interface-mode trunk;
+                vlan {
+                    members vlan02;
+                }
+            }
+        }
+    }
+    ge-0/0/7 {
+        unit 0 {
+            family ethernet-switching {
+                interface-mode trunk;
+                vlan {
+                    members vlan03;
+                }
+            }
+        }
+    }
+    ge-1/0/0 {
+        enable;
+    }
+    ae1 {
+        description "Configured by Ansible";
+    }
+    ae2 {
+        description "Configured by Ansible";
+    }
+    fxp0 {
+        description sample_1;
+        enable;
+        unit 0 {
+            family inet {
+                dhcp;
+            }
+            family inet6;
+        }
+    }
+}
+policy-options {
+    prefix-list SOMECUSTOMER-V4-BLAH {
+        dynamic-db;
+        10.0.0.0/24;
+        10.0.10.0/24;
+    }
+}
+routing-instances {
+    route1 {
+        instance-type no-forwarding;
+    }
+}
+vlans {
+    employee {
+        vlan-range 120-130;
+    }
+    vlan02 {
+        vlan-id 6;
+    }
+    vlan03 {
+        vlan-id 7;
+    }
+    vlan1 {
+        vlan-id 20;
+    }
+    vlan30 {
+        vlan-id 25;
+    }
+    vlan31 {
+        vlan-id 50;
+    }
+}
