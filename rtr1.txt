@@ -1,16 +1,15 @@
 Building configuration...
 
-  
-Current configuration : 3552 bytes
+Current configuration : 3590 bytes
 !
-! Last configuration change at 15:23:33 UTC Mon May 13 2024 by cisco
+! Last configuration change at 05:30:52 UTC Fri May 17 2024 by cisco
 !
 version 15.9
 service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname iosrestored
+hostname ios
 !
 boot-start-marker
 boot-end-marker
@@ -121,6 +120,8 @@ ip forward-protocol nd
 !
 no ip http server
 no ip http secure-server
+ip ssh version 2
+ip scp server enable
 !
 ipv6 ioam timestamp
 !
