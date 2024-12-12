@@ -1,8 +1,8 @@
 Building configuration...
 
-Current configuration : 2892 bytes
+Current configuration : 2930 bytes
 !
-! Last configuration change at 05:51:45 UTC Thu Dec 12 2024 by cisco
+! Last configuration change at 09:53:36 UTC Thu Dec 12 2024 by cisco
 !
 version 15.2
 service timestamps debug datetime msec
@@ -73,8 +73,10 @@ ip forward-protocol nd
 ip http server
 ip http secure-server
 !
+ip ssh version 2
 ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
 ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip scp server enable
 !
 !
 !
