@@ -1,8 +1,8 @@
 Building configuration...
 
-Current configuration : 2892 bytes
+Current configuration : 3057 bytes
 !
-! Last configuration change at 05:51:45 UTC Thu Dec 12 2024 by cisco
+! Last configuration change at 06:51:20 UTC Wed Jan 8 2025
 !
 version 15.2
 service timestamps debug datetime msec
@@ -30,6 +30,7 @@ no aaa new-model
 !
 ip domain-name ansible.lab
 ip cef
+ipv6 destination-guard policy DG_POLICY
 no ipv6 cef
 !
 !
@@ -37,6 +38,9 @@ no ipv6 cef
 spanning-tree mode pvst
 spanning-tree extend system-id
 !
+!
+vlan configuration 10
+ ipv6 snooping
 !
 ! 
 !
@@ -73,11 +77,15 @@ ip forward-protocol nd
 ip http server
 ip http secure-server
 !
+ip ssh version 2
 ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
 ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip scp server enable
 !
 !
 !
+!
+ipv6 prefix-list ALLOW_VLANS seq 5 permit 2001:DB8::/32
 !
 !
 !
